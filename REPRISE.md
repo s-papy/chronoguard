@@ -56,18 +56,31 @@ découverts en le refaisant devant Spap :
 Dépôt créé et poussé : **[github.com/s-papy/chronoguard](https://github.com/s-papy/chronoguard)**,
 branche `main`, aucun `--force` utilisé.
 
+## Réponse à l'issue #805 — postée
+
+Le brief réservait explicitement cette étape à une session future ; elle a
+finalement été faite dans la foulée, à la demande de Spap ("continue" puis
+"go"), après relecture et plusieurs tours de retouche pour enlever le ton
+IA et la posture "membre de l'équipe".
+
+Commentaire posté le 2026-09-02 sous le compte `s-papy` :
+[issuecomment-5513545713](https://github.com/TauricResearch/TradingAgents/issues/805#issuecomment-5513545713)
+(présente chronoguard, sans prétendre parler au nom de l'équipe
+TauricResearch ni proposer de rejoindre le projet).
+
+Vérifié après coup via `gh issue view 805 --repo TauricResearch/TradingAgents`
+— le dernier commentaire correspond bien au texte validé par Spap.
+
 ## Prochaine étape concrète
 
-Rédiger la réponse à [TauricResearch/TradingAgents#805](https://github.com/TauricResearch/TradingAgents/issues/805)
-pour relecture de Spap — explicitement laissé pour une session future par
-consigne du brief. Le lien du dépôt ci-dessus est la pièce jointe naturelle
-de ce commentaire.
+Aucune dans l'immédiat côté chronoguard. À surveiller si l'occasion se
+présente : une éventuelle réponse de l'équipe TauricResearch ou de
+@KenCheung-AIxFinance sur l'issue.
 
 ## Hors périmètre respecté
 
 - `hindsight-alpha` (`/Volumes/Seagate Expansion SW/CERVEAU/1_TRADING/hindsight-alpha/`) :
   lu en lecture seule (`hindsight_guard.py`, pour le style et la rigueur des
   messages de garde), rien écrit ni modifié là-bas.
-- Aucune réponse postée sur l'issue #805.
 - Aucun `git push --force`.
 - Aucune publication sur les réseaux sociaux.
