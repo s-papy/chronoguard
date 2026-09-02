@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chronoguard"
+version = "0.1.0"
+description = "Detect temporal contamination (weight-level future knowledge) in LLM trading-agent backtests."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Spap" }]
+
+[tool.setuptools.packages.find]
+include = ["chronoguard*"]
