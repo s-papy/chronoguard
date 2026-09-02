@@ -20,7 +20,7 @@ rien perdre (l'historique git est local, un seul commit).
 | Point | Statut |
 |---|---|
 | Dossier de projet créé | **Oui** — `2_OUTILS_VERIFICATION/chronoguard/` (voir écart ci-dessus) |
-| Dépôt GitHub public créé et poussé | **Non — bloqué** (voir ci-dessous) |
+| Dépôt GitHub public créé et poussé | **Oui** — [github.com/s-papy/chronoguard](https://github.com/s-papy/chronoguard) |
 | Registre de coupures fonctionnel | **Oui** — preuve : 8 tests dans `tests/test_registry.py`, tous verts |
 | Stress-test empirique fonctionnel | **Oui** — preuve : 6 tests dans `tests/test_stress_test.py`, tous verts (mock LLM, aucune clé API requise) |
 | README écrit | **Oui** — `README.md`, avec lien de contexte vers l'issue #805, install, usage des deux fonctionnalités, exemple de sortie réel (copié depuis `examples/demo.py` exécuté) |
@@ -38,37 +38,30 @@ Repo local : `git init` fait, 1 commit (`1bb32f1`), `git status` propre,
 clé API en dur — vérifié avant le commit (`git diff --cached --name-only`
 ne liste que du code et de la doc).
 
-## Blocage : création du dépôt GitHub
+## Dépôt GitHub — résolu
 
-`gh auth status` échoue : le token stocké pour `github.com` (compte
-`s-papy`) est invalide. Ni `GH_TOKEN` ni `GITHUB_TOKEN` ne sont définis
-dans l'environnement, et il n'y a pas de token utilisable dans le
-trousseau. Ce n'est pas quelque chose qu'une session automatisée peut
-réparer (ça demande une reconnexion interactive, navigateur ou device
-code) — donc pas fait ici, volontairement, plutôt que de forcer quelque
-chose.
+Signalé initialement comme bloqué (`gh auth status` affichait un token
+invalide pour `github.com`/`s-papy`). En fait deux problèmes distincts,
+découverts en le refaisant devant Spap :
 
-**Prochaine étape immédiate pour Spap**, une fois devant ce Mac :
+1. Le premier essai lancé par Spap depuis `~` (home) — `gh` cherchait un
+   repo git dans le mauvais dossier. Le repo local est dans
+   `2_OUTILS_VERIFICATION/chronoguard/`, pas `~`.
+2. Une fois dans le bon dossier, `gh repo create ... --push` échouait avec
+   une erreur TLS (`x509: OSStatus -26276`) — le proxy réseau du sandbox de
+   session interceptait la connexion HTTPS vers l'API GitHub. Rien à voir
+   avec le token, qui était en fait valide. Résolu en relançant la même
+   commande hors sandbox.
 
-```bash
-gh auth login -h github.com
-```
+Dépôt créé et poussé : **[github.com/s-papy/chronoguard](https://github.com/s-papy/chronoguard)**,
+branche `main`, aucun `--force` utilisé.
 
-Puis, depuis `2_OUTILS_VERIFICATION/chronoguard/` :
-
-```bash
-gh repo create chronoguard --public --source=. --remote=origin --push
-```
-
-(Pas de `--force`, pas de push forcé — un simple push initial sur un repo
-tout neuf.)
-
-## Prochaine étape concrète après ça
+## Prochaine étape concrète
 
 Rédiger la réponse à [TauricResearch/TradingAgents#805](https://github.com/TauricResearch/TradingAgents/issues/805)
 pour relecture de Spap — explicitement laissé pour une session future par
-consigne du brief. Le lien du dépôt une fois créé sera la pièce jointe
-naturelle de ce commentaire.
+consigne du brief. Le lien du dépôt ci-dessus est la pièce jointe naturelle
+de ce commentaire.
 
 ## Hors périmètre respecté
 
